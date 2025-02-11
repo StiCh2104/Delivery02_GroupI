@@ -40,7 +40,14 @@ public class PlayerMovement : MonoBehaviour
     {
         GameManager.Instance.ChangeState(GameState.Gameplay);
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Finish"))
+        {
+            Debug.Log("uhfus");
+            GameManager.Instance.ChangeState(GameState.Ending);
+        }
+    }
     // NOTE: InputSystem: "SaveScore" action becomes "OnSaveScore" method
     public void OnSaveScore()
     {

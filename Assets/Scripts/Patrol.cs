@@ -68,7 +68,6 @@ public class Patrol : MonoBehaviour
                 _timer = 0f;
                 NextPoint();
                 animator.SetBool("IsPatrolling", true);
-                animator.SetBool("EnemyIdle", false);
             }
             else
             {
