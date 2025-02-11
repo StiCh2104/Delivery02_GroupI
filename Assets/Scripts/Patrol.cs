@@ -11,6 +11,7 @@ public class Patrol : MonoBehaviour
     public Transform[] _patrolPoints;
     public float VisionRange;
     public float VisionAngle;
+    public Collider2D killCollider;
 
     private Animator animator;
     private int _currentPoint = 0;
@@ -20,6 +21,7 @@ public class Patrol : MonoBehaviour
 
     void Start()
     {
+
         enemyAlarm = GetComponentInChildren<EnemyAlarm>();
 
         animator = GetComponent<Animator>();
@@ -114,6 +116,20 @@ public class Patrol : MonoBehaviour
 
         return true;
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) 
+        {
+            PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
+
+            if (playerMovement != null)
+            {
+                playerMovement.Kill(); 
+            }
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
+    public TimeDisplay timeDisplayScript;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour
     {
         CurrentState = newState;
         Debug.Log("Estado actual: " + CurrentState);
+        if (timeDisplayScript != null)
+        {
+            timeDisplayScript.ResetTime();  
+        }
         switch (newState)
         {
             case GameState.Start:

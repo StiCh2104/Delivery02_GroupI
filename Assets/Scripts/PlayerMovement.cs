@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
         else transform.rotation = Quaternion.identity;
     }
 
+    public void Kill() // Game Over Logic
+    {
+        GameManager.Instance.ChangeState(GameState.Gameplay);
+    }
+
     // NOTE: InputSystem: "SaveScore" action becomes "OnSaveScore" method
     public void OnSaveScore()
     {
