@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DistanceCounter : MonoBehaviour
 {
-    public Text distanceText;  // Asigna el componente Text desde el Inspector.
+    public Text distanceText;  // Add DistanceHUD
     private Vector3 lastPosition;
     private float totalDistance;
 
