@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 8979770}
   - component: {fileID: 8979769}
   m_Layer: 5
-  m_Name: Distance
+  m_Name: DistanceHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 308, y: 207}
+  m_AnchoredPosition: {x: 237, y: 176}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8979769
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Distance:    units'
+  m_Text: 
 --- !u!222 &8979770
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 615651458}
   - component: {fileID: 615651457}
   m_Layer: 5
-  m_Name: Time
+  m_Name: TimeHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1226,7 +1226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 341.98, y: 166.34}
+  m_AnchoredPosition: {x: 270.98, y: 135.34}
   m_SizeDelta: {x: 227.97, y: 33.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615651457
@@ -1838,6 +1838,7 @@ GameObject:
   - component: {fileID: 1701691622}
   - component: {fileID: 1701691624}
   - component: {fileID: 1701691623}
+  - component: {fileID: 1701691625}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2056,6 +2057,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1701691625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701691613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5e5b6f0ca24de4f920c943aff1c622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceText: {fileID: 8979769}
 --- !u!1 &1743625219
 GameObject:
   m_ObjectHideFlags: 0
