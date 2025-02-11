@@ -1,59 +1,51 @@
-using UnityEngine;
+ï»¿using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
-
-public enum GameState { Start, Gameplay, Pause, Ending }
-
+public enum GameState { Start, Gameplay, Ending }
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
-
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject); // Mantener el GameManager al cambiar de escena
+        DontDestroyOnLoad(gameObject);
     }
-
     private void Start()
     {
         ChangeState(GameState.Start);
     }
-
     public void ChangeState(GameState newState)
     {
         CurrentState = newState;
         Debug.Log("Estado actual: " + CurrentState);
-
         switch (newState)
         {
             case GameState.Start:
-                SceneManager.LoadScene("StartScene");
+                SceneManager.LoadScene("Title");
                 break;
             case GameState.Gameplay:
                 SceneManager.LoadScene("Gameplay");
                 break;
-            case GameState.Pause:
-                Time.timeScale = 0; // Pausa el juego
-                break;
             case GameState.Ending:
-                SceneManager.LoadScene("EndingScene");
+                SceneManager.LoadScene("Ending");
                 break;
         }
     }
-
-    void Update()
+    public void StartGame() { ChangeState(GameState.Gameplay); }
+    public void GoToMainMenu() { ChangeState(GameState.Start); }
+    public void EndGame() { ChangeState(GameState.Ending); }
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && CurrentState == GameState.Gameplay)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ChangeState(GameState.Pause);
+            Application.Quit(); // close all
         }
-        else if (Input.GetKeyDown(KeyCode.P) && CurrentState == GameState.Pause)
+
+        if (Input.GetKeyDown(KeyCode.Return)) //start
         {
             ChangeState(GameState.Gameplay);
-            Time.timeScale = 1; // Reanuda el juego
-            //añadir: canvas false (invisible) -> true (visible) o algo ...
         }
     }
 }

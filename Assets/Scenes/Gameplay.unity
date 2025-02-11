@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Distance: 00 units'
+  m_Text: 'Distance:    units'
 --- !u!222 &8979770
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1248,7 +1248,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Time: 00 sec.'
+  m_Text: 'Time:    sec.'
 --- !u!222 &615651458
 CanvasRenderer:
   m_ObjectHideFlags: 0
