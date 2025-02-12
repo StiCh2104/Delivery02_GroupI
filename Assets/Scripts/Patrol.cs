@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Patrol : MonoBehaviour
 {
