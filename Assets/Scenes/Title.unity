@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7154a56ef41db804187552152e4e62d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeDisplayScript: {fileID: 0}
 --- !u!4 &221590801
 Transform:
   m_ObjectHideFlags: 0
@@ -174,8 +175,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 17561d4937e68da4aaee987cd5fed291, type: 3}
-  m_Resource: {fileID: 8300000, guid: 17561d4937e68da4aaee987cd5fed291, type: 3}
+  m_audioClip: {fileID: 8300000, guid: af8e77cb7eebf634f801a335bc992b5e, type: 3}
+  m_Resource: {fileID: 8300000, guid: af8e77cb7eebf634f801a335bc992b5e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.12
   m_Pitch: 1
