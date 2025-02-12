@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,8 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Kill() // Game Over Logic
     {
-        GameManager.Instance.ChangeState(GameState.Gameplay);
+        GameManager.Instance.ChangeState(GameState.Ending);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Finish"))

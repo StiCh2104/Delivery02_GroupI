@@ -7,16 +7,19 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
     public TimeDisplay timeDisplayScript;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
+
     private void Start()
     {
         ChangeState(GameState.Start);
     }
+
     public void ChangeState(GameState newState)
     {
         CurrentState = newState;
@@ -38,9 +41,13 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
     public void StartGame() { ChangeState(GameState.Gameplay); }
+
     public void GoToMainMenu() { ChangeState(GameState.Start); }
+
     public void EndGame() { ChangeState(GameState.Ending); }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class TimeDisplay : MonoBehaviour
 {
-    public Text timeText;  // Asigna el componente Text desde el Inspector.
-    private float timeInSeconds = 0f;  // Ahora es una variable de instancia.
+    public Text timeText;
+    private float timeInSeconds = 0f; 
 
     void Start()
     {
@@ -16,13 +16,11 @@ public class TimeDisplay : MonoBehaviour
 
     void Update()
     {
-        timeInSeconds += Time.deltaTime;  // Sumar el tiempo desde la última actualización.
+        timeInSeconds += Time.deltaTime; 
 
-        // Actualizar el texto de la UI con el tiempo transcurrido.
         timeText.text = "Time: " + Mathf.Floor(timeInSeconds) + " sec";
     }
 
-    // Función para reiniciar el tiempo
     public void ResetTime()
     {
         timeInSeconds = 0f;

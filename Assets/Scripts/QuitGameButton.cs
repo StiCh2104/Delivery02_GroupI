@@ -1,15 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Si estás usando escenas.
+using UnityEngine.SceneManagement; // If you are using scenes.
 
 public class QuitGameButton : MonoBehaviour
 {
     public void QuitGame()
     {
 #if UNITY_EDITOR
-        // Si estás en el editor, el juego se detiene.
+        // If you are in the editor, the game stops.
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            // Si no estás en el editor, se cierra la aplicación.
+            // If you are not in the editor, the application closes.
             Application.Quit();
 #endif
     }
