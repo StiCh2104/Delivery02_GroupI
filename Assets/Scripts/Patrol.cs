@@ -1,20 +1,23 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Patrol : MonoBehaviour
 {
     [SerializeField] private float TimeToWait;
     [SerializeField] private float Speed;
+    [SerializeField] private float RotationSpeed;
     [SerializeField] private LayerMask ObstacleMask;
     [SerializeField] private LayerMask PlayerMask;
+    [SerializeField] private float LookLeftRightSpeed = 2f;
 
     public Transform[] _patrolPoints;
     public float VisionRange;
     public float VisionAngle;
     public Collider2D killCollider;
 
-    private Animator animator;
+    private bool isLookingLeft = false;
     private int _currentPoint = 0;
     private float _timer = 0f;
     private Transform _player;
@@ -24,9 +27,6 @@ public class Patrol : MonoBehaviour
     {
 
         enemyAlarm = GetComponentInChildren<EnemyAlarm>();
-
-        animator = GetComponent<Animator>();
-
         _player = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (_patrolPoints.Length > 0)
@@ -43,12 +43,9 @@ public class Patrol : MonoBehaviour
         }
 
         var playerClose = IsPlayerClose();
-        animator.SetBool("IsChasing", playerClose);
-
         if(playerClose)
         {
             enemyAlarm.PlayerDetected();
-            animator.SetBool("IsPatrolling", false);
             ChasePlayer();
         }
         else
@@ -62,22 +59,16 @@ public class Patrol : MonoBehaviour
         if (Vector3.Distance(transform.position, _patrolPoints[_currentPoint].position) < 0.1f)
         {
             _timer += Time.deltaTime;
-            animator.SetBool("IsPatrolling", false);
 
             if (_timer >= TimeToWait)
             {
                 _timer = 0f;
                 NextPoint();
-                animator.SetBool("IsPatrolling", true);
             }
-            else
-            {
-                animator.SetBool("IsPatrolling", false);
-            }
+            LookLeftRight();
         }
         else
         {
-            animator.SetBool("IsPatrolling", true);
             MoveToNextPoint();
         }
     }
@@ -85,8 +76,21 @@ public class Patrol : MonoBehaviour
     void MoveToNextPoint()
     {
         transform.position = Vector3.MoveTowards(transform.position, _patrolPoints[_currentPoint].position, Speed * Time.deltaTime);
+        Vector2 direction = (_patrolPoints[_currentPoint].position - transform.position).normalized;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float smoothAngle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, Time.deltaTime * RotationSpeed); 
+        transform.rotation = Quaternion.Euler(0, 0, smoothAngle);
     }
-
+    void LookLeftRight()
+    {
+        float targetAngle = isLookingLeft ? 180f : 0f;
+        float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, LookLeftRightSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (Mathf.Abs(transform.eulerAngles.z - targetAngle) < 1f)
+        {
+            isLookingLeft = !isLookingLeft; 
+        }
+    }
     void NextPoint()
     {
         _currentPoint = (_currentPoint + 1) % _patrolPoints.Length;
@@ -94,7 +98,10 @@ public class Patrol : MonoBehaviour
     void ChasePlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, _player.position, Speed * Time.deltaTime);
+        Vector2 directionToPlayer = (_player.position - transform.position).normalized;
+        transform.right = directionToPlayer;
     }
+
     private bool IsPlayerClose()
     {
         if (_player == null)

@@ -1589,7 +1589,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096440405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b21a478247b7421438a2fbffd1a69dac, type: 2}
   m_CullingMode: 0
@@ -1615,21 +1615,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9172510e8ea16b5479d7f8918fe2add4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeToWait: 3
-  Speed: 5
+  TimeToWait: 2
+  Speed: 4
+  RotationSpeed: 10
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 512
   PlayerMask:
     serializedVersion: 2
     m_Bits: 256
+  LookLeftRightSpeed: 120
   _patrolPoints:
   - {fileID: 2059565630}
   - {fileID: 1858556330}
   - {fileID: 2123376813}
   VisionRange: 2.65
   VisionAngle: 136.8
-  killCollider: {fileID: 0}
+  killCollider: {fileID: 1362366631}
 --- !u!212 &1096440408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2532,12 +2534,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeToWait: 5
   Speed: 3
+  RotationSpeed: 10
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 512
   PlayerMask:
     serializedVersion: 2
     m_Bits: 256
+  LookLeftRightSpeed: 90
   _patrolPoints:
   - {fileID: 952657351}
   - {fileID: 1307119316}
@@ -2545,7 +2549,7 @@ MonoBehaviour:
   - {fileID: 895569123}
   VisionRange: 2.65
   VisionAngle: 136.8
-  killCollider: {fileID: 0}
+  killCollider: {fileID: 1203065035}
 --- !u!212 &1749419822
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2703,7 +2707,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749419820}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b21a478247b7421438a2fbffd1a69dac, type: 2}
   m_CullingMode: 0
